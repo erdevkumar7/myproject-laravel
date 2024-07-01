@@ -24,6 +24,16 @@
                     <li class="nav-item d-none d-sm-inline-block">
                         <a href="#" class="nav-link">Contact</a>
                     </li>
+                    <li class="nav-item d-none d-sm-inline-block">
+                    
+                      @if (Auth::check())
+                      <form action="{{ route('user.logout') }}" method="POST" style="display: inline;">
+                          @csrf
+                          <button type="submit" class="btn btn-danger">Logout</button>
+                      </form>
+                 
+                  @endif
+                  </li>
                 </ul>
 
                 <!-- Right navbar links -->
@@ -1500,4 +1510,5 @@
             </aside>
             <!-- /.control-sidebar -->
         </div>
+
     @endsection
