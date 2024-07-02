@@ -13,9 +13,9 @@ class UserController extends Controller
    public function registerSave(Request $request)
    {
       $data = $request->validate([
-         'name' => 'required',
-         'email' => 'required|email',
-         'password' => 'required'
+         'name' => 'required|string|max:255',
+         'email' => 'required|string|email|max:255|unique:users',
+         'password' => 'required|string|min:8|confirmed',
       ]);
 
       $user = User::create($data);
