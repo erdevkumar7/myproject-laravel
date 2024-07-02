@@ -13,17 +13,17 @@ Route::get('/', function () {
 /* ----------------------------------------------------------------------------------------------- */
 // todo: Adim Routes
 Route::controller(AdminController::class)->group(function () {
-    Route::get('/admin', 'index')->name('admin.index')->middleware('auth');
+
 });
 /* ----------------------------------------------------------------------------------------------- */
 // todo: Users Routes
 Route::controller(UserController::class)->group(function () {
-    Route::post('logout', 'logout')->name('user.logout');
-    Route::get('register', 'register')->name('user.register');
-    Route::post('register', 'registerSave')->name('user.registerSave');
-    Route::get('login', 'login')->name('user.login');
-    Route::post('login', 'loginSave')->name('user.loginSave');
-    Route::get('dashbord', 'userdashbord')->name('user.userdashboard');
+    Route::post('logout', 'logout')->name('logout');
+    Route::view('register', 'user.register')->name('register');
+    Route::post('register', 'registerSave')->name('registerSave');
+    Route::get('login', 'login')->name('login');
+    Route::post('login', 'loginSave')->name('loginSave');
+    Route::get('dashboard', 'dashboard')->name('dashboard');
 });
 
 /* ----------------------------------------------------------------------------------------------- */

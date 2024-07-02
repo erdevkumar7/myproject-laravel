@@ -9,11 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
-   public function register()
-   {
-      return view('user.register');
-   }
-
+   /* ----------------------------------------------------------------------------- */
    public function registerSave(Request $request)
    {
       $data = $request->validate([
@@ -25,16 +21,18 @@ class UserController extends Controller
       $user = User::create($data);
       // $user = DB::table('users')->insert($data);
       if ($user) {
-         return redirect()->route('user.login');
+         return redirect()->route('login');
          //    return response()->json($user);
       }
    }
 
+   /* ----------------------------------------------------------------------------- */
    public function login()
    {
       return view('user.login');
    }
 
+   /* ----------------------------------------------------------------------------- */
    public function loginSave(Request $request)
    {
       $credential = $request->validate([
@@ -45,15 +43,21 @@ class UserController extends Controller
       $check = Auth::attempt($credential);
 
       if (Auth::attempt($credential)) {
-         $request->session()->put('user', $request->input('name'));
-         return redirect()->route('admin.index');
+         return redirect()->route('dashboard');
       }
       // Authentication failed...
       return back()->withErrors([
          'email' => 'The provided credentials do not match our records.',
       ])->withInput();
    }
+   /* ----------------------------------------------------------------------------- */
+   //todo: Dashboard
+   public function dashboard()
+   {
+      return  Auth::check() ? view('admin.index') : redirect()->route('login');
+   }
 
+   /* ----------------------------------------------------------------------------- */
    // Logout method
    public function logout(Request $request)
    {

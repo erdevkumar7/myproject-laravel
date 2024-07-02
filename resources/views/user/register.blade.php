@@ -12,7 +12,7 @@
             <div class="card-body register-card-body">
                 <p class="login-box-msg">Register a new membership</p>
 
-                <form action="{{ route('user.registerSave') }}" method="post">
+                <form action="{{ route('registerSave') }}" method="post">
                     @csrf
                     <div class="input-group mb-3">
                         <input type='text' name="name" id="name" class="form-control" placeholder="Full name" required>
@@ -50,7 +50,7 @@
 
                     <div class="row">
                         <div class="col-8">
-                            <a href="{{ route('user.login') }}" class="text-center">I already have a membership</a>
+                            <a href="{{ route('login') }}" class="text-center">I already have a membership</a>
                         </div>
                         <div class="col-4">
                             <button type="submit" class="btn btn-primary btn-block">Register</button>
