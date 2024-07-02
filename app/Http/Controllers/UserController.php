@@ -27,12 +27,6 @@ class UserController extends Controller
    }
 
    /* ----------------------------------------------------------------------------- */
-   public function login()
-   {
-      return view('user.login');
-   }
-
-   /* ----------------------------------------------------------------------------- */
    public function loginSave(Request $request)
    {
       $credential = $request->validate([
@@ -50,15 +44,18 @@ class UserController extends Controller
          'email' => 'The provided credentials do not match our records.',
       ])->withInput();
    }
-   /* ----------------------------------------------------------------------------- */
-   //todo: Dashboard
+
+   /* todo: Dashbord ---------------------------------------------------------------- */
    public function dashboard()
    {
-      return  Auth::check() ? view('admin.index') : redirect()->route('login');
+      if (Auth::check()) {
+         $view = Auth::user()->role === 'admin' ? 'admin.index' : 'user.index';
+         return view($view);
+      }
+      return redirect()->route('login');
    }
 
-   /* ----------------------------------------------------------------------------- */
-   // Logout method
+   /* Logout method ----------------------------------------------------------------- */
    public function logout(Request $request)
    {
       Auth::logout();
@@ -67,4 +64,5 @@ class UserController extends Controller
 
       return redirect('login');
    }
+   /* ----------------------------------------------------------------------------- */
 }
