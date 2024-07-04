@@ -20,9 +20,10 @@ Route::controller(AdminController::class)->group(function () {
         Route::view('admin', 'admin.home')->name('admin_home');
         Route::get('/admin/dashboard', 'admin_dashboard')->name('admin_dashboard');
         Route::post('/admin/logout', 'admin_logout')->name('admin_logout');
+        Route::view('/admin/product', 'admin.add_product')->name('add_product');
     });
 });
-/* ----------------------------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------------- */
 // todo: Users Routes
 Route::controller(UserController::class)->group(function () {
     Route::view('/', 'user.home')->name('home');

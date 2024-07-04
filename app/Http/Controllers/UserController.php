@@ -12,16 +12,21 @@ class UserController extends Controller
    /* ----------------------------------------------------------------------------- */
    public function registerSave(Request $request)
    {
-      $data = $request->validate([
+      $request->validate([
          'name' => 'required|string|max:255',
          'email' => 'required|string|email|max:255|unique:users',
          'password' => 'required|string|min:8|confirmed',
       ]);
 
-      $user = User::create($data);
+      $user = new User();
+      $user->name = $request->name;
+      $user->email = $request->email;
+      $user->password = $request->password;
+      $user->role = 'user';
+
+      $user->save();
       if ($user) {
          return redirect()->route('login');
-         //    return response()->json($user);
       }
    }
 

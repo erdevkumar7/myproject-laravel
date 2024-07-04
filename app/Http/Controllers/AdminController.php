@@ -9,16 +9,22 @@ class AdminController extends Controller
 {
     public function admin_registerSave(Request $request)
     {
-        $data = $request->validate([
+         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|unique:users',
-            'password' => 'required|string|min:8|confirmed'
+            'password' => 'required|string|min:8|confirmed',
         ]);
 
-        $admin = User::create($data);
-        if($admin){
-            return redirect()->route('admin_login');
-        }
+        $admin = new User();
+        $admin->name = $request->name;
+        $admin->email = $request->email;
+        $admin->password = $request->password;
+        $admin->role = 'admin';
+
+        $admin->save();
+
+        return redirect()->route('admin_login');
+        
     }
 
     public function admin_loginSave(Request $request)
