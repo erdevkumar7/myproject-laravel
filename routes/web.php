@@ -7,9 +7,9 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('welcome');
 /* ----------------------------------------------------------------------------------------------- */
 // todo: Adim Routes
 Route::controller(AdminController::class)->group(function () {
@@ -17,11 +17,15 @@ Route::controller(AdminController::class)->group(function () {
 /* ----------------------------------------------------------------------------------------------- */
 // todo: Users Routes
 Route::controller(UserController::class)->group(function () {
+    Route::view('/', 'user.home')->name('home');
+    Route::view('about', 'user.about')->name('about');
+    
     Route::view('register', 'user.register')->name('register');
     Route::post('register', 'registerSave')->name('registerSave');
-
+    
     Route::view('login', 'user.login')->name('login');
     Route::post('login', 'loginSave')->name('loginSave');
+ 
 
     Route::middleware('auth')->group(function () {
         Route::get('dashboard', 'dashboard')->name('dashboard');

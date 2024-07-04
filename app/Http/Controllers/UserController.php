@@ -49,7 +49,7 @@ class UserController extends Controller
    public function dashboard()
    {
       if (Auth::check()) {
-         $view = Auth::user()->role === 'admin' ? 'admin.index' : 'user.index';
+         $view = Auth::user()->role === 'admin' ? 'admin.index' : 'user.home';
          return view($view);
       }
       return redirect()->route('login');
