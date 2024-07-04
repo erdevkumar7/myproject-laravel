@@ -1,5 +1,5 @@
 <!-- resources/views/admin/index.blade.php -->
-@extends('layouts.app')
+@extends('admin.layouts.app')
 
 @section('content')
 
@@ -25,7 +25,7 @@
                         <a href="#" class="nav-link">Contact</a>
                     </li>
                     <li class="nav-item d-none d-sm-inline-block">
-                        <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                        <form action="{{ route('admin_logout') }}" method="POST" style="display: inline;">
                             @csrf
                             <button type="submit" class="btn btn-danger">Logout</button>
                         </form>
@@ -178,7 +178,8 @@
                             <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                         </div>
                         <div class="info">
-                            <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+                            {{-- <a href="#" class="d-block">{{ Auth::user()->name }}</a> --}}
+                            <a href="#" class="d-block">Demo name</a>
                         </div>
                     </div>
 

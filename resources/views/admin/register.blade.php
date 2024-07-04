@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 
 @section('content')
 
@@ -22,7 +22,7 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('registerSave') }}" method="post">
+                    <form action="{{ route('admin_registerSave') }}" method="post">
                         @csrf
                         <div class="input-group mb-3">
                             <input type='text' name="name" id="name" class="form-control" placeholder="Full name"
@@ -52,17 +52,18 @@
                             </div>
                         </div>
                         <div class="input-group mb-3">
-													<input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="Retype password" required>
-													<div class="input-group-append">
-															<div class="input-group-text">
-																	<span class="fas fa-lock"></span>
-															</div>
-													</div>
+                            <input type="password" name="password_confirmation" id="password_confirmation"
+                                class="form-control" placeholder="Retype password" required>
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-lock"></span>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="row">
                             <div class="col-8">
-                                <a href="{{ route('login') }}" class="text-center">I already have a membership</a>
+                                <a href="{{ route('admin_login') }}" class="text-center">I already have a membership</a>
                             </div>
                             <div class="col-4">
                                 <button type="submit" class="btn btn-primary btn-block">Register</button>

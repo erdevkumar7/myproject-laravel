@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 
 @section('content')
 <body class="hold-transition login-page">
@@ -21,7 +21,7 @@
                     </div>
                 @endif
 
-                <form action="{{ route('loginSave') }}" method="post">
+                <form action="{{ route('admin_loginSave') }}" method="post">
                     @csrf
                     <div class="input-group mb-3">
                         <input type="email" name="email" class="form-control" placeholder="Email" value="{{ old('email') }}" required>
@@ -41,7 +41,7 @@
                     </div>
                     <div class="row">
                         <div class="col-8">
-                            <a href="{{ route('register') }}" class="text-center">Register a new membership</a>
+                            <a href="{{ route('admin_register') }}" class="text-center">Register a new membership</a>
                         </div>
                         <div class="col-4">
                             <button type="submit" class="btn btn-primary btn-block">Sign In</button>

@@ -7,12 +7,20 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// })->name('welcome');
 /* ----------------------------------------------------------------------------------------------- */
 // todo: Adim Routes
 Route::controller(AdminController::class)->group(function () {
+    Route::view('/admin/register','admin.register')->name('admin_register');
+    Route::post('/admin/register', 'admin_registerSave')->name('admin_registerSave');
+
+    Route::view('/admin/login', 'admin.login')->name('admin_login');
+    Route::post('/admin/login', 'admin_loginSave')->name('admin_loginSave');
+
+    Route::middleware('auth')->group(function(){
+        Route::view('admin', 'admin.home')->name('admin_home');
+        Route::get('/admin/dashboard', 'admin_dashboard')->name('admin_dashboard');
+        Route::post('/admin/logout', 'admin_logout')->name('admin_logout');
+    });
 });
 /* ----------------------------------------------------------------------------------------------- */
 // todo: Users Routes

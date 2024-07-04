@@ -19,7 +19,6 @@ class UserController extends Controller
       ]);
 
       $user = User::create($data);
-      // $user = DB::table('users')->insert($data);
       if ($user) {
          return redirect()->route('login');
          //    return response()->json($user);
@@ -49,7 +48,7 @@ class UserController extends Controller
    public function dashboard()
    {
       if (Auth::check()) {
-         $view = Auth::user()->role === 'admin' ? 'admin.index' : 'user.home';
+         $view = Auth::user()->role === 'admin' ? 'admin.home' : 'user.home';
          return view($view);
       }
       return redirect()->route('login');
