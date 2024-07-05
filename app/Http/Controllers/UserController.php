@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -53,7 +54,7 @@ class UserController extends Controller
    public function dashboard()
    {
       if (Auth::check()) {
-         $view = Auth::user()->role === 'admin' ? 'admin.home' : 'user.home';
+         $view = Auth::user()->role === 'admin' ? 'admin.home' : 'user.dashboard';
          return view($view);
       }
       return redirect()->route('login');
@@ -69,4 +70,10 @@ class UserController extends Controller
       return redirect('login');
    }
    /* ----------------------------------------------------------------------------- */
+   public function homeContent()
+   {
+      $products = Product::all();
+      // return response()->json($products);
+      return view('user.home', ['products' => $products]);
+   }
 }

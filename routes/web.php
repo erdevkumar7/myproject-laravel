@@ -25,7 +25,7 @@ Route::controller(AdminController::class)->group(function () {
 /* ---------------------------------------------------------------------------------- */
 // todo: Users Routes
 Route::controller(UserController::class)->group(function () {
-    Route::view('/', 'user.home')->name('home');
+    Route::get('/', 'homeContent')->name('home');
     Route::view('about', 'user.about')->name('about');
 
     Route::view('register', 'user.register')->name('register');
@@ -43,14 +43,16 @@ Route::controller(UserController::class)->group(function () {
 /* ----------------------------------------------------------------------------------- */
 // todo: Admin Product CRUD
 Route::controller(ProductController::class)->group(function () {
+    Route::get('/products', 'index')->name('products.index');
+    Route::get('/products/{product}', 'show')->name('products.show');
+
     Route::middleware('admin')->group(function () {
         Route::view('/admin/product/add', 'admin.product.add')->name('product_add');
         Route::post('/admin/product/add', 'productSave')->name('productSave');
 
-        Route::get('/products', 'index')->name('products.index');
         Route::get('/products/create', 'create')->name('products.create');
         Route::post('/products', 'store')->name('products.store');
-        Route::get('/products/{product}', 'show')->name('products.show');
+        
         Route::get('/products/{product}/edit', 'edit')->name('products.edit');
         Route::put('/products/{product}', 'update')->name('products.update');
         Route::delete('/products/{product}', 'destroy')->name('products.destroy');
