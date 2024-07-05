@@ -189,7 +189,7 @@
                                 <li class="nav-header">EXAMPLES</li>
 
                                 <li class="nav-item">
-                                    <a href="{{route('add_product')}}" class="nav-link">
+                                    <a href="{{route('product_add')}}" class="nav-link">
                                         <i class="nav-icon far fa-image"></i>
                                         <p>
                                             Product

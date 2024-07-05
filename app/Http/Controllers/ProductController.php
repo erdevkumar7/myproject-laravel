@@ -18,18 +18,36 @@ class ProductController extends Controller
         return view('products.create');
     }
 
-    public function store(Request $request)
+    public function productSave(Request $request)
     {
-        $request->validate([
+       $request->validate([
             'name' => 'required',
             'description' => 'required',
             'price' => 'required|numeric',
-            'quantity' => 'required|integer',
+            'category' => 'required',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+        
+        // Handle file upload
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $originalImageName = $image->getClientOriginalName();
+            $imageName = time().'_'.$originalImageName;
+            $image->move(public_path('images'), $imageName);
+        } else {
+            $imageName = null;
+        }
+
+        // Create a new product
+        Product::create([
+            'name' => $request->name,
+            'price' => $request->price,
+            'category' => $request->category,
+            'description' => $request->description,
+            'image' => $imageName,
         ]);
 
-        Product::create($request->all());
-
-        return redirect()->route('products.index')->with('success', 'Product created successfully.');
+        return redirect()->route('admin_dashboard')->with('success', 'Product created successfully.');
     }
 
     public function show(Product $product)
@@ -64,4 +82,3 @@ class ProductController extends Controller
         return redirect()->route('products.index')->with('success', 'Product deleted successfully.');
     }
 }
-
