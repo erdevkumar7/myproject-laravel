@@ -1,10 +1,9 @@
-@extends('admin.layouts.app')
+@include('admin.header')
 
-@section('content')
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="#"><b>Admin</b>LTE</a>
+            <a href="#"><b>Admin</b>foody</a>
         </div>
         <!-- /.login-logo -->
         <div class="card">
@@ -21,10 +20,11 @@
                     </div>
                 @endif
 
-                <form action="{{ route('admin_loginSave') }}" method="post">
+                <form action="{{route('admin_loginSave')}}" method="post">
                     @csrf
                     <div class="input-group mb-3">
-                        <input type="email" name="email" class="form-control" placeholder="Email" value="{{ old('email') }}" required>
+                        <input type="email" name="email" class="form-control" placeholder="Email"
+                            value="{{ old('email') }}" required>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
@@ -52,4 +52,5 @@
             <!-- /.login-card-body -->
         </div>
     </div>
-@endsection
+
+    @include('admin.footer')

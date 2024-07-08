@@ -17,7 +17,7 @@ Route::controller(AdminController::class)->group(function () {
     Route::post('/admin/login', 'admin_loginSave')->name('admin_loginSave');
 
     Route::middleware(['admin'])->group(function () {
-        Route::view('admin', 'admin.home')->name('admin_home');
+        Route::view('admin', 'admin.dashboard')->name('admin_home');
         Route::get('/admin/dashboard', 'admin_dashboard')->name('admin_dashboard');
         Route::post('/admin/logout', 'admin_logout')->name('admin_logout');
     });
@@ -43,19 +43,19 @@ Route::controller(UserController::class)->group(function () {
 /* ----------------------------------------------------------------------------------- */
 // todo: Admin Product CRUD
 Route::controller(ProductController::class)->group(function () {
-    Route::get('/products', 'index')->name('products.index');
-    // Route::get('/products/{product}', 'show')->name('products.show');
-
+    
     Route::middleware('admin')->group(function () {
+        Route::get('/admin/product', 'product_all')->name('product_all');
         Route::view('/admin/product/add', 'admin.product.add')->name('product_add');
         Route::post('/admin/product/add', 'productSave')->name('productSave');
+        
+        Route::get('/admin/product/{product}', 'product_show')->name('product_show');
+        Route::get('/admin/product/{product}/edit', 'product_edit')->name('product_edit');
+        Route::delete('/products/{product}', 'destroy')->name('products.destroy');
 
         // Route::get('/products/create', 'create')->name('products.create');
-        // Route::post('/products', 'store')->name('products.store');
-        
-        // Route::get('/products/{product}/edit', 'edit')->name('products.edit');
-        // Route::put('/products/{product}', 'update')->name('products.update');
-        // Route::delete('/products/{product}', 'destroy')->name('products.destroy');
+        // Route::post('/products', 'store')->name('products.store');        
+        Route::put('/admin/product/{product}', 'product_update')->name('product_update');
     });
 });
 /* ------------------------------------------------  -------------------------------- */
