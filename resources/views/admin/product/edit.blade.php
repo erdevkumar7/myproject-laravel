@@ -19,48 +19,63 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card card-primary">
-                        <form action="{{ route('product_update', $product->id) }}" method="POST" enctype="multipart/form-data">
-                          @csrf
-                          @method('PUT')
-                          <div class="card-body">
-                            <div class="form-group">
-                              <input type="text" class="form-control" name="name" value="{{$product->name}}" placeholder="Product name">
-                            </div>
-                            <div class="input-group mb-3">
-                              <input type="text" name="price" value="{{$product->price}}" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Price">
-                              <span class="input-group-text">$</span>
-                          </div>
-                            <div class="form-group">
-                              <input type="text" value="{{$product->category}}" class="form-control" name="category" placeholder="Category">
-                            </div>
-                            <div class="form-group">
-                              <textarea class="form-control" name="description">{{ $product->description }}</textarea>
-                            </div>
-                            <div class="form-group">
-                              <label for="exampleInputFile">Prodcut image</label>
-                              <div class="input-group">
-                                <div class="custom-file">
-                                  <input type="file" class="custom-file-input" name="image">
-                                  <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                        <form action="{{ route('product_update', $product->id) }}" method="POST"
+                            enctype="multipart/form-data">
+                            @csrf
+                            @method('PUT')
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="productName">Name</label>
+                                    <input type="text" class="form-control" name="name" value="{{ $product->name }}">
                                 </div>
-                                <div class="input-group-append">
-                                  <span class="input-group-text">Upload</span>
+                                <div class="form-group">
+                                    <label for="productPrice">Price</label>
+                                    <input type="text" name="price" value="{{ $product->price }}" class="form-control"
+                                        aria-label="Amount (to the nearest dollar)">
                                 </div>
-                              </div>
+                                <div class="form-group">
+                                    <label for="productCategory">Category</label>
+                                    <input type="text" value="{{ $product->category }}" class="form-control"
+                                        name="category">
+                                </div>
+                                <div class="form-group">
+                                    <label for="productDescription">Description</label>
+                                    <textarea class="form-control" name="description">{{ $product->description }}</textarea>
+                                </div>
+                                <div class="form-group">
+                                  <div class="mb-3 mt-2">
+                                    <label for="productImage">Previous Image</label>
+                                    @if ($product->image)
+                                        <img src="{{ asset('images/' . $product->image) }}" alt="{{ $product->name }}" class="img-fluid" width="5%" height="5%">
+                                    @else
+                                        <p>No image available</p>
+                                    @endif
+                                  </div>
+                                  
+                                    <label for="productImage">Select New Image</label>
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" name="image">
+                                            <label class="custom-file-label" for="productImage">Choose file</label>
+                                        </div>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">Upload</span>
+                                        </div>
+                                    </div>
+                                
+                                </div>
                             </div>
-                          </div>
-                          <!-- /.card-body -->
-          
-                          <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                          </div>
+                            <!-- /.card-body -->
+
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
                         </form>
                         <!-- /.card-body -->
                     </div>
                     <!-- /.card -->
                 </div>
             </div>
-   
         </section>
         <!-- /.content -->
     </div>

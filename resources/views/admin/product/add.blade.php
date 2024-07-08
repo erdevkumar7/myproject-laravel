@@ -33,7 +33,7 @@
                               <input type="text" class="form-control" name="category" placeholder="Category">
                             </div>
                             <div class="form-group">
-                              <textarea class="form-control" name="description" placeholder="Long description"></textarea>
+                              <textarea class="form-control" name="description" placeholder="Description"></textarea>
                             </div>
                             <div class="form-group">
                               <label for="exampleInputFile">Prodcut image</label>

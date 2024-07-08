@@ -46,15 +46,13 @@ Route::controller(ProductController::class)->group(function () {
     
     Route::middleware('admin')->group(function () {
         Route::get('/admin/product', 'product_all')->name('product_all');
-        Route::view('/admin/product/add', 'admin.product.add')->name('product_add');
+        
         Route::post('/admin/product/add', 'productSave')->name('productSave');
+        Route::view('/admin/product/add', 'admin.product.add')->name('product_add');
         
         Route::get('/admin/product/{product}', 'product_show')->name('product_show');
         Route::get('/admin/product/{product}/edit', 'product_edit')->name('product_edit');
-        Route::delete('/products/{product}', 'destroy')->name('products.destroy');
-
-        // Route::get('/products/create', 'create')->name('products.create');
-        // Route::post('/products', 'store')->name('products.store');        
+        Route::delete('/products/{product}', 'destroy')->name('products.destroy');       
         Route::put('/admin/product/{product}', 'product_update')->name('product_update');
     });
 });
