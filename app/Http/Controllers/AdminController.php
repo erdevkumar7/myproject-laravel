@@ -46,7 +46,7 @@ class AdminController extends Controller
     public function admin_dashboard()
     {
         if (Auth::check()) {
-            $view = Auth::user()->role === 'admin' ? 'admin.home' : 'user.home';
+            $view = Auth::user()->role === 'admin' ? 'admin.dashboard' : 'user.dashboard';
             return view($view);
          }  
 

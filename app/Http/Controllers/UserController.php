@@ -54,7 +54,7 @@ class UserController extends Controller
    public function dashboard()
    {
       if (Auth::check()) {
-         $view = Auth::user()->role === 'admin' ? 'admin.home' : 'user.home';
+         $view = Auth::user()->role === 'admin' ? 'admin.dashboard' : 'user.dashboard';
          $products = Product::all();
          return view($view, ['products' => $products]);
       }
