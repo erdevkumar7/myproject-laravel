@@ -73,9 +73,9 @@
                                 </a>
                               </li>
                               <li class="nav-item">
-                                <a href="{{route('product_add')}}" class="nav-link">
+                                <a href="{{route('category_all')}}" class="nav-link">
                                   <i class="far fa-circle nav-icon"></i>
-                                  <p>Product Add</p>
+                                  <p>All Categories</p>
                                 </a>
                               </li>
                             </ul>

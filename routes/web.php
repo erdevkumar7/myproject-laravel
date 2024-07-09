@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrderController;
@@ -47,13 +48,23 @@ Route::controller(ProductController::class)->group(function () {
     Route::middleware('admin')->group(function () {
         Route::get('/admin/product', 'product_all')->name('product_all');
         
-        Route::post('/admin/product/add', 'productSave')->name('productSave');
         Route::view('/admin/product/add', 'admin.product.add')->name('product_add');
+        Route::post('/admin/product/add', 'productSave')->name('productSave');
         
         Route::get('/admin/product/{product}', 'product_show')->name('product_show');
         Route::get('/admin/product/{product}/edit', 'product_edit')->name('product_edit');
-        Route::delete('/products/{product}', 'destroy')->name('products.destroy');       
         Route::put('/admin/product/{product}', 'product_update')->name('product_update');
+        
+        Route::delete('/products/{product}', 'destroy')->name('products.destroy');       
     });
 });
 /* ------------------------------------------------  -------------------------------- */
+Route::controller(CategoryController::class)->group(function(){
+    Route::get('/category', 'category_all')->name('category_all');
+
+    Route::get('/category/add', 'add')->name('category_add');
+    Route::post('/category/add', 'category_save')->name('category_save');
+
+    Route::get('/category/{id}', 'show')->name('category_show');
+
+});

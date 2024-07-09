@@ -7,17 +7,14 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    /* ----------------------------------------------------------------------------------- */
     public function product_all()
     {
         $products = Product::all();
         return view('admin.product.all', compact('products'));
     }
 
-    public function create()
-    {
-        return view('products.create');
-    }
-
+    /* ----------------------------------------------------------------------------------- */
     public function productSave(Request $request)
     {
         $request->validate([
@@ -50,21 +47,22 @@ class ProductController extends Controller
         return redirect()->route('product_all')->with('success', 'Product created successfully.');
     }
 
-
+    /* ----------------------------------------------------------------------------------- */
     public function product_show($id)
     {
         // Find the product by its ID
         $product = Product::findOrFail($id);
-
         // Pass the product to the view
         return view('admin.product.show', compact('product'));
     }
 
+    /* ----------------------------------------------------------------------------------- */
     public function product_edit(Product $product)
     {
         return view('admin.product.edit', compact('product'));
     }
 
+    /* ----------------------------------------------------------------------------------- */
     public function product_update(Request $request, $id)
     {
         $request->validate([
@@ -110,7 +108,7 @@ class ProductController extends Controller
         return redirect()->route('product_all')->with('success', 'Product updated successfully.');
     }
 
-
+    /* ----------------------------------------------------------------------------------- */
     public function destroy($id)
     {
         // Find the product by its ID

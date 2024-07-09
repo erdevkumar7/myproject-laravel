@@ -8,7 +8,13 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Product View</h1>
+                        <h1 class="m-0">Product Details</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <a href="{{ route('product_edit', $product->id) }}" class="btn btn-danger m-1">Product Edit</a>
+                            <a href="{{ route('product_all') }}" class="btn btn-danger m-1">Back</a>
+                        </ol>
                     </div>
                 </div>
             </div>

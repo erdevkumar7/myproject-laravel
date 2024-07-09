@@ -10,6 +10,11 @@
                      <div class="col-sm-6">
                          <h1 class="m-0">Product All</h1>
                      </div>
+                     <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <a href="{{ route('product_add') }}" class="btn btn-danger">Add Product</a>
+                        </ol>
+                     </div>
                  </div>
              </div>
          </section>
@@ -25,9 +30,6 @@
                      <div class="card-tools">
                          <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                              <i class="fas fa-minus"></i>
-                         </button>
-                         <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                             <i class="fas fa-times"></i>
                          </button>
                      </div>
                  </div>
