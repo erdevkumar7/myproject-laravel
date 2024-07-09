@@ -61,15 +61,15 @@ Route::controller(ProductController::class)->group(function () {
 });
 /* ------------------------------------------------  -------------------------------- */
 Route::controller(CategoryController::class)->group(function(){
-    Route::get('/category', 'category_all')->name('category_all');
+    Route::get('/admin/category', 'category_all')->name('category_all');
     
-    Route::get('/category/add', 'add')->name('category_add');
-    Route::post('/category/add', 'category_save')->name('category_save');
+    Route::get('/admin/category/add', 'add')->name('category_add');
+    Route::post('/admin/category/add', 'category_save')->name('category_save');
     
-    Route::get('/category/{id}/edit', 'edit')->name('category_edit');
-    Route::put('/category/{id}', 'update')->name('category_update');
+    Route::get('/admin/category/{id}/edit', 'edit')->name('category_edit');
+    Route::put('/admin/category/{id}', 'update')->name('category_update');
 
-    Route::get('/category/{id}', 'show')->name('category_show');
+    Route::get('/admin/category/{id}', 'show')->name('category_show');
 
     Route::delete('category/{id}', 'destroy')->name('category_destroy');
 });

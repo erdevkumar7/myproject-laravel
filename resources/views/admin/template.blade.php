@@ -31,7 +31,7 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="#" class="brand-link">
-                <img src="{{ asset('images') . '/' . 'adminlogo.png' }}" alt="AdminLogo"
+                <img src="{{ asset('images/users') . '/' . 'adminlogo.png' }}" alt="AdminLogo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">FoodyAdmin</span>
             </a>
@@ -40,7 +40,7 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="{{ asset('images') . '/' . 'user.jpg' }}" class="img-circle elevation-2"
+                        <img src="{{ asset('images/users') . '/' . 'user.jpg' }}" class="img-circle elevation-2"
                             alt="User Image">
                     </div>
                     <div class="info">
