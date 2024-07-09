@@ -11,7 +11,12 @@ class ProductController extends Controller
     public function product_all()
     {
         $products = Product::all();
-        return view('admin.product.all', compact('products'));
+        return view('product.all', compact('products'));
+    }
+
+    public function add()
+    {
+        return view('product.add');
     }
 
     /* ----------------------------------------------------------------------------------- */
@@ -22,7 +27,7 @@ class ProductController extends Controller
             'description' => 'required',
             'price' => 'required|numeric',
             'category' => 'required',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         // Handle file upload
@@ -53,13 +58,13 @@ class ProductController extends Controller
         // Find the product by its ID
         $product = Product::findOrFail($id);
         // Pass the product to the view
-        return view('admin.product.show', compact('product'));
+        return view('product.show', compact('product'));
     }
 
     /* ----------------------------------------------------------------------------------- */
     public function product_edit(Product $product)
     {
-        return view('admin.product.edit', compact('product'));
+        return view('product.edit', compact('product'));
     }
 
     /* ----------------------------------------------------------------------------------- */
