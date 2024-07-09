@@ -72,8 +72,8 @@
                                         </td>
                                         <td>
                                            <a href="{{route('category_show', $category->id)}}" class="btn btn-info">View</a>
-                                           <a href="" class="btn btn-warning">Edit</a>
-                                           <form action="" method="POST" style="display:inline;">
+                                           <a href="{{route('category_edit', $category->id)}}" class="btn btn-warning">Edit</a>
+                                           <form action="{{route('category_destroy', $category->id)}}" method="POST" style="display:inline;">
                                                @csrf
                                                @method('DELETE')
                                                <button type="submit" class="btn btn-danger">Delete</button>
