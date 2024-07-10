@@ -3,20 +3,27 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
     /* ----------------------------------------------------------------------------------- */
     public function product_all()
     {
-        $products = Product::all();
+        $products = Product::with('category')->orderBy('created_at')->get();
+        dd($products);
         return view('product.all', compact('products'));
     }
-
+    
+    
+    
+     /* ----------------------------------------------------------------------------------- */
     public function add()
     {
-        return view('product.add');
+        $categories = Category::all();
+        return view('product.add', compact('categories'));
     }
 
     /* ----------------------------------------------------------------------------------- */
@@ -26,7 +33,7 @@ class ProductController extends Controller
             'name' => 'required',
             'description' => 'required',
             'price' => 'required|numeric',
-            'category' => 'required',
+            'category_id' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
@@ -44,7 +51,7 @@ class ProductController extends Controller
         Product::create([
             'name' => $request->name,
             'price' => $request->price,
-            'category' => $request->category,
+            'category_id' => $request->category_id,
             'description' => $request->description,
             'image' => $imageName,
         ]);
@@ -74,7 +81,7 @@ class ProductController extends Controller
             'name' => 'required',
             'description' => 'required',
             'price' => 'required|numeric',
-            'category' => 'required',
+            'category_id' => 'required',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
@@ -105,7 +112,7 @@ class ProductController extends Controller
         $product->update([
             'name' => $request->name,
             'price' => $request->price,
-            'category' => $request->category,
+            'category_id' => $request->category_id,
             'description' => $request->description,
             'image' => $imageName,
         ]);

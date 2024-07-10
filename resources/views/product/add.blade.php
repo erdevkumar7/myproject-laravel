@@ -38,13 +38,22 @@
                                         <span class="text-danger" id="priceErr">{{ $message }}</span>
                                     @enderror
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label for="productCategory">Category</label>
                                     <input type="text" class="form-control" name="category" id="productCategory"
                                         oninput="removeError('categoryErr')">
                                     @error('category')
                                         <span class="text-danger" id="categoryErr">{{ $message }}</span>
                                     @enderror
+                                </div> --}}
+                                <div class="form-group">
+                                    <label for="productCategory">Product Category</label>
+                                    <select class="form-select form-select-lg mb-3" name="category_id" aria-label=".form-select-lg example">
+                                        <option selected>Select Category</option>
+                                        @foreach ($categories as $category)
+                                            <option value="{{$category->id}}">{{$category->name}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="productDescription">Description</label>

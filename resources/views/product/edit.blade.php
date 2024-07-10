@@ -40,8 +40,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="productCategory">Category</label>
-                                    <input type="text" value="{{ $product->category }}" class="form-control"
-                                        name="category">
+                                    <input type="text" value="{{ $product->category->name }}" class="form-control"
+                                        name="category_id">
                                 </div>
                                 <div class="form-group">
                                     <label for="productDescription">Description</label>
