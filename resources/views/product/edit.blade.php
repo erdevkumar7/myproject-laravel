@@ -39,9 +39,13 @@
                                         aria-label="Amount (to the nearest dollar)">
                                 </div>
                                 <div class="form-group">
-                                    <label for="productCategory">Category</label>
-                                    <input type="text" value="{{ $product->category->name }}" class="form-control"
-                                        name="category_id">
+                                    <label for="productCategory">Product Category</label>
+                                    <select class="form-select form-select-lg mb-3" name="category_id" aria-label=".form-select-lg example">
+                                        <option selected>{{ $product->category ? $product->category->name : 'No Category' }}</option>
+                                        @foreach ($categories as $category)
+                                            <option value="{{$category->id}}">{{$category->name}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="productDescription">Description</label>

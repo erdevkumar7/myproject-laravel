@@ -20,7 +20,7 @@
                     </div>
                 @endif
 
-                <form action="{{route('admin_loginSave')}}" method="post">
+                <form action="{{route('admin_registerSave')}}" method="post">
                     @csrf
                     <div class="input-group mb-3">
                         <input type='text' name="name" id="name" class="form-control" placeholder="Full name"
@@ -61,7 +61,7 @@
 
                     <div class="row">
                         <div class="col-8">
-                            <a href="" class="text-center">I already have a membership</a>
+                            <a href="{{route('admin_login')}}" class="text-center">I already have a membership</a>
                         </div>
                         <div class="col-4">
                             <button type="submit" class="btn btn-primary btn-block">Register</button>

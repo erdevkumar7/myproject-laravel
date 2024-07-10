@@ -13,7 +13,6 @@ class ProductController extends Controller
     public function product_all()
     {
         $products = Product::with('category')->orderBy('created_at')->get();
-        dd($products);
         return view('product.all', compact('products'));
     }
     
@@ -71,7 +70,8 @@ class ProductController extends Controller
     /* ----------------------------------------------------------------------------------- */
     public function product_edit(Product $product)
     {
-        return view('product.edit', compact('product'));
+        $categories = Category::all();
+        return view('product.edit', compact('product','categories'));
     }
 
     /* ----------------------------------------------------------------------------------- */
