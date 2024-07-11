@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -73,8 +74,14 @@ class UserController extends Controller
    /* ----------------------------------------------------------------------------- */
    public function homeContent()
    {
-      $products = Product::all();
-      // return response()->json($products);
-      return view('user.home', ['products' => $products]);
+      $products = Product::with('category')->get();
+      $categories = Category::all();
+      return view('user.home', compact('products','categories'));
    }
+
+   public function category_by_id($id){
+      $products = DB::table('products')->where('category_id', $id)->get();
+      $categories = Category::all();
+      return view('user.category_product', compact('products','categories'));
+  }
 }

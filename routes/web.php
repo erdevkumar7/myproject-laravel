@@ -40,11 +40,14 @@ Route::controller(UserController::class)->group(function () {
         Route::get('dashboard', 'dashboard')->name('dashboard');
         Route::post('logout', 'logout')->name('logout');
     });
+
+    
+    Route::get('/category/{id}', 'category_by_id')->name('category_by_id');
 });
 /* ----------------------------------------------------------------------------------- */
 // todo: Admin Product CRUD
 Route::controller(ProductController::class)->group(function () {
-    
+
     Route::middleware('admin')->group(function () {
         Route::get('/admin/product', 'product_all')->name('product_all');
         
@@ -56,7 +59,7 @@ Route::controller(ProductController::class)->group(function () {
         
         Route::get('/admin/product/{product}', 'product_show')->name('product_show');
 
-        Route::delete('/products/{product}', 'destroy')->name('products.destroy');       
+        Route::delete('/admin/products/{product}', 'destroy')->name('products.destroy');       
     });
 });
 /* ------------------------------------------------  -------------------------------- */
@@ -71,5 +74,6 @@ Route::controller(CategoryController::class)->group(function(){
 
     Route::get('/admin/category/{id}', 'show')->name('category_show');
 
-    Route::delete('category/{id}', 'destroy')->name('category_destroy');
+    Route::delete('/admin/category/{id}', 'destroy')->name('category_destroy');
+
 });
