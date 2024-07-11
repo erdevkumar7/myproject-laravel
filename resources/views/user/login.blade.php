@@ -12,7 +12,7 @@
             <nav id="navmenu" class="navmenu">
                 <ul>
                     <li><a href="{{route('home')}}" >Home<br></a></li>
-                    <li><a href="{{route('about')}}">About</a></li>
+                    <li><a href="#menu">Menu</a></li>
                     @if(Auth::check())  <form action="{{ route('logout') }}" method="POST" style="display: inline;">
                         @csrf
                         <button type="submit" class="btn btn-danger">Logout</button>
