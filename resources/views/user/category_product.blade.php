@@ -3,7 +3,7 @@
     <!-- Menu Section -->
     <section id="menu" class="menu section">
         <div class="container section-title" data-aos="fade-up">
-            <p><span>Check Our</span> <span class="description-title">Yummy Foods</span></p>
+            <p><span>Check Our</span> <span class="description-title">{{$category_name}}</span></p>
         </div>
         <div class="container">
             <div class="tab-content" data-aos="fade-up" data-aos-delay="200">

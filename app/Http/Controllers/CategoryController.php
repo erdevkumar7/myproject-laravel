@@ -116,10 +116,11 @@ class CategoryController extends Controller
         }
     }
 
-   public function category_by_id($id){
+   public function category_by_id($id, Request $request){
+    $category_name = $request->query('category_name');
     $products = DB::table('products')->where('category_id', $id)->get();
     $categories = Category::all();
-    return view('user.category_product', compact('products','categories'));
+    return view('user.category_product', compact('products','categories','category_name'));
 }
 
 

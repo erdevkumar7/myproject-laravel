@@ -1,5 +1,7 @@
 @extends('user.layout')
 @section('main_content')
+   <div id="search-results"></div>
+   <div id="original-div">
     <!-- Hero Section -->
     <section id="hero" class="hero section light-background">
 
@@ -53,4 +55,5 @@
             </div>
         </div>
     </section>
+   </div>
 @endsection
