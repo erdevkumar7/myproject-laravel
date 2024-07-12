@@ -65,7 +65,8 @@ class UserController extends Controller
       if (Auth::check()) {
          $view = Auth::user()->role === 'admin' ? 'admin.dashboard' : 'user.dashboard';
          $products = Product::all();
-         return view($view, ['products' => $products]);
+         $categories = Category::all();
+         return view($view, ['products' => $products, 'categories'=> $categories]);
       }
       return redirect()->route('login');
    }

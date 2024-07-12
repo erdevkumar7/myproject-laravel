@@ -13,7 +13,7 @@
                         with Bootstrap</p>
                     <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
                         <a href="#book-a-table" class="btn-get-started">Booka a Table</a>
-                        <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ"
+                        <a href="https://youtu.be/Cz0et7LU2_8?si=D4V9glGrkahbWzw7"
                             class="glightbox btn-watch-video d-flex align-items-center"><i
                                 class="bi bi-play-circle"></i><span>Watch Video</span></a>
                     </div>
