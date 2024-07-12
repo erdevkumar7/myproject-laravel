@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class CategoryController extends Controller
@@ -114,6 +115,12 @@ class CategoryController extends Controller
             return redirect()->route('category_all')->with('success', 'Category deleted');
         }
     }
+
+   public function category_by_id($id){
+    $products = DB::table('products')->where('category_id', $id)->get();
+    $categories = Category::all();
+    return view('user.category_product', compact('products','categories'));
+}
 
 
 }

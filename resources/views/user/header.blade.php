@@ -8,12 +8,13 @@
 
         <nav id="navmenu" class="navmenu">
             <ul>
+                <li><input type="text" id="search" class="form-control" placeholder="Search food..."></li>
                 <li><a href="{{ route('home') }}">Home<br></a></li>
                 <li class="dropdown"><a href="#"><span>Menu</span> <i
                             class="bi bi-chevron-down toggle-dropdown"></i></a>
                     <ul>
                         @foreach ($categories as $category)
-                            <li><a href="{{route('category_by_id', $category->id)}}">{{ $category->name }}</a></li>
+                            <li><a href="{{ route('category_by_id', $category->id) }}">{{ $category->name }}</a></li>
                         @endforeach
                     </ul>
                 </li>
@@ -29,5 +30,25 @@
             </ul>
             <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#search').on('keyup', function() {
+                    let query = $(this).val();
+                    $.ajax({
+                        url: '{{ route('search') }}',
+                        type: 'GET',
+                        data: {
+                            'query': query
+                        },
+                        success: function(products) {
+                            console.log(products)
+                            // window.location.href = '{{ route('search') }}?query=' + query;
+                        }
+                    });
+                });
+            });
+        </script>
     </div>
 </header>

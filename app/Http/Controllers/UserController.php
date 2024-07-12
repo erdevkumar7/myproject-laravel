@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
+   public function register(){
+      $categories = Category::all();
+      return view('user.register', compact('categories'));
+   }
    /* ----------------------------------------------------------------------------- */
    public function registerSave(Request $request)
    {
@@ -33,6 +37,10 @@ class UserController extends Controller
    }
 
    /* ----------------------------------------------------------------------------- */
+   public function login(){
+      $categories = Category::all();
+      return view('user.login', compact('categories'));
+   }
    public function loginSave(Request $request)
    {
       $credential = $request->validate([
@@ -78,10 +86,4 @@ class UserController extends Controller
       $categories = Category::all();
       return view('user.home', compact('products','categories'));
    }
-
-   public function category_by_id($id){
-      $products = DB::table('products')->where('category_id', $id)->get();
-      $categories = Category::all();
-      return view('user.category_product', compact('products','categories'));
-  }
 }

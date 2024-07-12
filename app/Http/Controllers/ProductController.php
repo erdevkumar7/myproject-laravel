@@ -132,10 +132,15 @@ class ProductController extends Controller
                 unlink($imagePath);
             }
         }
-
         // Delete the product from the database
         $product->delete();
-
         return redirect()->route('product_all')->with('success', 'Product deleted successfully.');
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+        $products = Product::where('name', 'LIKE', "%{$query}%")->get();
+        return response()->json($products);
     }
 }

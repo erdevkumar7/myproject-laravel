@@ -4,8 +4,6 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 
 /* ----------------------------------------------------------------------------------------------- */
@@ -29,10 +27,10 @@ Route::controller(UserController::class)->group(function () {
     Route::get('/', 'homeContent')->name('home');
     Route::view('about', 'user.about')->name('about');
 
-    Route::view('register', 'user.register')->name('register');
+    Route::get('register', 'register')->name('register');
     Route::post('register', 'registerSave')->name('registerSave');
 
-    Route::view('login', 'user.login')->name('login');
+    Route::get('login', 'login')->name('login');
     Route::post('login', 'loginSave')->name('loginSave');
 
     
@@ -40,14 +38,10 @@ Route::controller(UserController::class)->group(function () {
         Route::get('dashboard', 'dashboard')->name('dashboard');
         Route::post('logout', 'logout')->name('logout');
     });
-
-    
-    Route::get('/category/{id}', 'category_by_id')->name('category_by_id');
 });
 /* ----------------------------------------------------------------------------------- */
-// todo: Admin Product CRUD
+// todo: Product CRUD
 Route::controller(ProductController::class)->group(function () {
-
     Route::middleware('admin')->group(function () {
         Route::get('/admin/product', 'product_all')->name('product_all');
         
@@ -61,8 +55,11 @@ Route::controller(ProductController::class)->group(function () {
 
         Route::delete('/admin/products/{product}', 'destroy')->name('products.destroy');       
     });
+
+    Route::get('search','search')->name('search');
 });
 /* ------------------------------------------------  -------------------------------- */
+//todo: Categiry Controller
 Route::controller(CategoryController::class)->group(function(){
     Route::get('/admin/category', 'category_all')->name('category_all');
     
@@ -74,6 +71,7 @@ Route::controller(CategoryController::class)->group(function(){
 
     Route::get('/admin/category/{id}', 'show')->name('category_show');
 
-    Route::delete('/admin/category/{id}', 'destroy')->name('category_destroy');
+    Route::delete('/admin/category/{id}', 'destroy')->name('category_destroy');  
+    Route::get('/category/{id}', 'category_by_id')->name('category_by_id');
 
 });
